@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simpleSelectionSort</title>
+</head>
+<body>
+    <script>
+        /*
+        * 简单选择排序
+        * 每次选择出来最小的放在最前面，而冒泡排序时每次把最大的放在最后面，所以是类似的。
+        * 首先假设“第一个”数最小，如果遇到后面还有更小的，就放在前面即可
+        * 排序完毕
+        */
+        function simpleSelectionSort(arr) {
+            var len = arr.length,
+                i,
+                j,
+                temp,
+                min;
+            for (i = 0; i < len; i++) {
+                min = i;
+                for (j = i + 1; j < len; j++ ) {
+                    if (arr[j] < arr[min]) {
+                        min = j;
+                    }
+                }
+                if (min !== i) {
+                    temp = arr[min];
+                    arr[min] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+            console.log(arr);
+        }
+        simpleSelectionSort([12, 28, 18, 29, 8, 17]); // [8, 12, 17, 18, 28, 29]
+        simpleSelectionSort([95, 93, 92, 65, 66, 97]); // [65, 66, 92, 93, 95, 97]
+        // 注意事项：很好理解，最好不要使用<=类似的符号，因为需要用<=的，我们一般都可以使用<并改变数字大小来实现。
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>merge_sorrrrrrt</title>
+</head>
+<body>
+<script>
+/*
+* 归并排序
+* 采用的是分治法的思想，即首先将整个数组分成单个的即长度为1的数组，然后最后进行有序的合并。  
+*/
+Array.prototype.mergeSort = function () {
+    var merge = function (left, right) {
+        var final = [];
+        while (left.length && right.length) {
+            final.push(left[0] < right[0] ? left.shift() : right.shift());
+        }
+        return final.concat(left.concat(right));
+    }
+    var len = this.length;
+    if (len < 2) {
+        return this;
+    }
+    var mid = len/2;
+    return merge(this.slice(0, parseInt(mid)).mergeSort(), this.slice(parseInt(mid)).mergeSort());
+}
+var arr = [15, 18, 28, 56, 45, 8, 12, 29];
+console.log(arr.mergeSort()); //[8, 12, 15, 18, 28, 29, 45, 56]
+</script>
+</body>
+</html>

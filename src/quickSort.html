@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>quickSoooooort</title>
+</head>
+<body>
+<script>
+    /*
+    * 快速排序
+    * 即取得中间的值，然后把小于中间的放在左边，大于中间的放在右边，递归执行函数即可  
+    */
+    Array.prototype.quickSort = function () {
+        // 获取长度
+        var len = this.length;
+        // 如何长度不大于1， 直接返回即可
+        if (len <= 1) {
+            return this.slice(0);
+        }   
+        // 定义left、right、mid数组
+        // 注意：mid必须要是数组，因为我们希望用到数组的concat方法。 这样才能完成递归调用
+        var left = [],
+            right = [],
+            mid = [this[0]];
+        // 这里从i=1开始即可，因为i=0已经让我们看做中间值了，就算是用了i=0，也是做得无意义的比较
+        for (var i = 1; i < len; i++) {
+            if (this[i] < mid[0]) {
+                left.push(this[i]);
+            }
+            if (this[i] > mid[0]) {
+                right.push(this[i]);
+            }
+        }
+        // 精髓，递归调用。关键在于当length <= 1时，就返回了，即递归调用一定要有一个出口。
+        return left.quickSort().concat(mid.concat(right.quickSort()));
+    };
+    var arr = [5, 45, 12, 69]; 
+    console.log(arr.quickSort()); // [5, 12, 45, 69]
+</script>
+</body>
+</html> 

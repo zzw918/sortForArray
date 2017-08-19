@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>InsertSort</title>
+</head>
+<body>
+<script>
+    /*
+    * 插入排序
+    * 就像整理扑克牌一样，前面的是有序的，每次拿到一张牌，我们就比较他们之前的大小关系，然后插入即可
+    * i从1开始，是因为我们认为第一个数字是排列好的，而每循环一次，就认为前面已经排列好了一次。
+    * 所以在外层循环的过程中，每次循环就是把其中一个数字放在一个合适的位置上，但首先要缓存起来，即如果比前面的小，那么就让前面的向后移，最后把缓存的数字放在合适的位置上。
+    * 排序完毕
+    */
+    function insertSort(arr) {
+        var len = arr.length,
+            i,
+            j,
+            temp;
+        for (i = 1; i < len; i++) {
+            temp = arr[i];
+            j = i;
+            while ((temp < arr[j - 1])&&(j > 0)) {
+                arr[j] = arr[j - 1];
+                j--;
+            }
+            arr[j] = temp;
+        }
+        console.log(arr);
+    }
+
+    insertSort([12, 17, 29, 28, 8, 18]); //[8, 12, 17, 18, 28, 29]
+    // 注意：一定要提前把arr[i]缓存起来，否则就会被覆盖掉；
+</script>
+</body>
+</html>
+ 

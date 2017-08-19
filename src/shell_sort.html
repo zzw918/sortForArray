@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shellSorrrrrrrrt</title>
+</head>
+<body>
+    <script>
+    /*
+    * 希尔排序
+    * 思想： 把数组按照一定的gap抓取即可，抓取得到的使用插入排序 
+    * 排序完毕
+    */
+    Array.prototype.shellSort = function () {
+        var gap, i, j;
+        var temp;
+        for (gap = this.length >> 1; gap > 0; gap >>= 1) {
+            for (i = gap; i < this.length; i++) {
+                temp = this[i];
+                for (j = i - gap; j >= 0 && this[j] > temp; j -= gap) {
+                    this[j + gap] = this[j];
+                }
+                this[j + gap] = temp;
+            }
+        }
+        console.log(this);
+    };
+    [564, 54, 25, 18].shellSort();
+    </script>
+</body>
+</html>

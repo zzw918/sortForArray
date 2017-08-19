@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>heapssssssort</title>
+</head>
+<body>
+<script>
+    /*
+    * 堆排序： 即每次建立一个堆，然后把大的往后放，每次都要使用递归
+    */
+    function heapSort(arr) {
+
+        // 交换函数
+        function swap(i, j) {
+            var tmp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = tmp;
+        }
+
+        // start 即认为是根节点， end认为是最后一个index然后加1
+        function heapify(start, end) {
+            var dad = start;
+            // son为左子树的序号
+            var son = dad*2 + 1;
+
+            if (son >= end) {
+                return;
+            }
+            // 选择两者中的大者，将大者和dad比较，然后如果更大就替换
+            if (son + 1 < end && arr[son] < arr[son + 1]) {
+                son++;
+            }
+            if (arr[son] > arr[dad])　{
+                swap(son, dad);
+                heapify(son, end);
+            }
+        }
+        var len = arr.length;
+        // 从最后一个父节点开始，进行一次堆排序，因为如何不是父节点，就是没有意义的。
+        for (var i = Math.floor(len/2) - 1; i >= 0; i--) {
+            heapify(i, len);
+        }
+
+        // 整个的排序与交换位置
+        for (var i = len - 1; i >= 0; i--) {
+            swap(0, i);
+            heapify(0, i);
+        }
+        console.log(arr);
+    }
+    heapSort([15, 25, 482, 555, 89]); //[15, 25, 89, 482, 555]
+</script>
+</body>
+</html>
