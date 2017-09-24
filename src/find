@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>查找</title>
+</head>
+<body>
+  <script>
+    Array.prototype.binary_search = function (low, high, key) {
+        // 如果找不到，就返回false
+        if (low > high) {
+            return false;
+        }
+        var mid = Math.floor((high + low)/2);
+        if (key < this[mid]) {
+            return this.binary_search(low, mid - 1, key);
+        } else if (key > this[mid]) {
+            return this.binary_search(mid + 1, high, key);
+        } else {
+            // 如果找到，返回true
+            return true;
+        }
+    }
+    var arr = [15, 18, 25,45, 56, 59, 78, 83];
+    console.log(arr.binary_search(0, arr.length - 1, 15));
+  </script>
+</body>
+</html>
