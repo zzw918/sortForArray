@@ -6,6 +6,7 @@
 </head>
 <body>
   <script>
+    
     Array.prototype.binary_search = function (low, high, key) {
         // 如果找不到，就返回false
         if (low > high) {
@@ -21,7 +22,9 @@
             return true;
         }
     }
-    var arr = [15, 18, 25,45, 56, 59, 78, 83];
+    // var arr = [15, 18, 25,45, 56, 59, 78, 83];
+    // 注意：上面的arr是错的，因为二分查找要求必须是有序数组。
+    var arr = [12, 25, 33, 45, 85];
     console.log(arr.binary_search(0, arr.length - 1, 15));
   </script>
 </body>
