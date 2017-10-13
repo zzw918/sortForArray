@@ -22,8 +22,8 @@ Array.prototype.mergeSort = function () {
     if (len < 2) {
         return this;
     }
-    var mid = len/2;
-    return merge(this.slice(0, parseInt(mid)).mergeSort(), this.slice(parseInt(mid)).mergeSort());
+    var mid = parseInt(len/2);
+    return merge(this.slice(0, mid).mergeSort(), this.slice(mid).mergeSort());
 }
 var arr = [15, 18, 28, 56, 45, 8, 12, 29];
 console.log(arr.mergeSort()); //[8, 12, 15, 18, 28, 29, 45, 56]
